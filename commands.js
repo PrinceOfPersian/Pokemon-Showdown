@@ -326,7 +326,9 @@ exports.commands = {
 		};
 		if (avatarid in avatarTable) {
 			avatar = avatarTable[avatarid];
-		} else {
+		} else if (avatarid === user.userid && user.confirmed === user.userid) {
+			avatar = '#' + avatarid;
+                } else {
 			avatar = parseInt(avatarid);
 		}
 		if (typeof avatar === 'number' && (!avatar || avatar > 294 || avatar < 1)) {
